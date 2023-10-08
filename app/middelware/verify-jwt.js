@@ -19,6 +19,7 @@ function verifyJWT(req, res, next) {
             message: "Invalid bearer token",
         });
     }
+
 }
 
 module.exports = verifyJWT;
