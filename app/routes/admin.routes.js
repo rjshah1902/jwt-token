@@ -2,6 +2,7 @@ const express = require('express');
 
 const url = "/admin";
 
+
 const routes = express.Router();
 
 const admin = require('./../controllers/admin.controller');
