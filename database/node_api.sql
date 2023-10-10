@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2023 at 10:00 PM
+-- Generation Time: Oct 10, 2023 at 09:17 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -58,6 +58,27 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `status`, `created_at`, 
 (14, 'Baby Girl', 'baby3@gmail.com', '12345', 1, '2023-10-02 17:06:08', '2023-10-02 17:06:08'),
 (15, 'Baby Girl', 'baby4@gmail.com', '12345', 1, '2023-10-02 17:06:21', '2023-10-02 17:06:21');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `status`, `created`) VALUES
+(1, 'Electrical', 1, '2023-10-11 00:45:52'),
+(2, 'Home Set', 1, '2023-10-11 00:45:52');
+
 --
 -- Indexes for dumped tables
 --
@@ -69,6 +90,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -77,6 +104,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

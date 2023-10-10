@@ -10,7 +10,7 @@ const Admin = function () { };
 
 Admin.getAdminList = (req, res, next) => {
 
-    sql = "select * from admin";
+    sql = `select * from admin`;
 
     db.query(sql, (error, result) => {
 
@@ -41,8 +41,6 @@ Admin.getAdminLogin = (req, res, next) => {
 
         sql = `select * from admin where email = '${email}' and password = '${password}' `;
 
-        console.log(sql);
-
         db.query(sql, (error, result) => {
 
             if (error) {
@@ -53,7 +51,7 @@ Admin.getAdminLogin = (req, res, next) => {
                     token: "",
                 }, null);
             } else {
-                jwt.sign({ result }, authKey.key, { expiresIn: "300s" }, (error, result2) => {
+                jwt.sign({ result }, authKey.key, { expiresIn: "30000s" }, (error, result2) => {
                     res(null, {
                         message: "Admin Details Found Successfully",
                         status: true,

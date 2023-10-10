@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+const AuthKey = require('./auth-key');
+
 function verifyJWT(req, res, next) {
 
     const bearerToken = req.headers['authorization'];
@@ -10,9 +12,23 @@ function verifyJWT(req, res, next) {
 
         const token = bearer[1];
 
-        req.token = token;
+        jwt.verify(token, AuthKey.key, (err, result) => {
 
-        next();
+            if (err) {
+                res.status(400).send({
+                    message: "Error Found " + err.message,
+                    status: false,
+                    data: []
+                });
+            } else {
+                /* res.status(200).send({
+                     message: "Admin Login Success",
+                     status: true,
+                     data: result
+                 }); */
+                next();
+            }
+        });
 
     } else {
         res.send({
