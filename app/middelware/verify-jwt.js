@@ -26,6 +26,8 @@ function verifyJWT(req, res, next) {
                      status: true,
                      data: result
                  }); */
+                // console.log(result.result[0]);
+                req.user = result.result[0];
                 next();
             }
         });

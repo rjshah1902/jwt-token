@@ -4,7 +4,9 @@ const category = require('./../models/category.models');
 
 exports.getAllCategory = (req, res) => {
 
-    category.getAll(null, (err, result) => {
+    const data = req.user;
+
+    category.getAll(data, (err, result) => {
 
         if (err) {
             res.status(400).send({

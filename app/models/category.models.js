@@ -6,9 +6,15 @@ const table_name = "category";
 
 const Category = function () { }
 
-Category.getAll = (req, res) => {
+Category.getAll = async (data, res) => {
 
-    sql = `select * from ${table_name}`;
+    sql = `select * from ${table_name} where admin_id = '${data.id}'`;
+
+    // const result = await db.query(sql);
+
+    // console.log(result.rows);
+
+    // return result;
 
     db.query(sql, (err, result) => {
 
@@ -25,7 +31,6 @@ Category.getAll = (req, res) => {
                 data: result,
             });
         }
-
     });
 };
 
